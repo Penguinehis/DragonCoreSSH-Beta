@@ -4,4 +4,4 @@ Para instalar use o comando abaixo:
 bash <(wget -qO- https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/install.sh)
 ```
 
-Para suporte: https://t.me/sshplusprocracked
+Para suporte: https://t.me/dragoncoresshgp
