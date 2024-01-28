@@ -1,4 +1,4 @@
-reposi=$(find /etc/apt/ -name *.list | xargs cat | grep  ^[[:space:]]*deb | grep -q "ppa.launchpad.net/ondrej/php" && echo 1 || echo 0)
+reposi=$(find /etc/apt/ -name *.list | xargs cat | grep  ^[[:space:]]*deb | grep -q "/ondrej/php" && echo 1 || echo 0)
 if [ "$reposi" = "1" ]; then
 echo "OK"   
 else
