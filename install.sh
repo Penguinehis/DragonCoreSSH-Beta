@@ -11,6 +11,7 @@ php_version2="$(command php --version 2>'/dev/null' \
 | command cut --characters=5-7)"
 if [ "$php_version2" != "8.1" ]; then
 apt purge php-cli php-curl php-sqlite3 -y
+apt purge php8.2-cli php8.2-curl php8.2-sqlite3 git -y
 apt autoremove -y
 apt install php8.1-cli php8.1-curl php8.1-sqlite3 php8.1-pgsql git -y
 else
