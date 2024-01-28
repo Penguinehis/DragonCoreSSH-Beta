@@ -1,4 +1,3 @@
-apt upgrade -y
 reposi=$(find /etc/apt/ -name *.list | xargs cat | grep  ^[[:space:]]*deb | grep -q "ppa.launchpad.net/ondrej/php" && echo 1 || echo 0)
 if [ "$reposi" = "1" ]; then
 echo "OK"   
@@ -12,13 +11,22 @@ php_version2="$(command php --version 2>'/dev/null' \
 | command cut --characters=5-7)"
 if [ "$php_version2" != "8.1" ]; then
 apt purge php-cli php-curl php-sqlite3 -y
-apt purge php8.2-cli php8.2-curl php8.2-sqlite3 -y
 apt autoremove -y
 apt install php8.1-cli php8.1-curl php8.1-sqlite3 php8.1-pgsql git -y
 else
 apt install php8.1-cli php8.1-curl php8.1-sqlite3 php8.1-pgsql git -y
 fi
+PREFERENCES_FILE="/etc/apt/preferences.d/php-pin-8.1.pref"
+if [ -f "$PREFERENCES_FILE" ]; then
+    echo "Preferences file already exists. Exiting."
+fi
+tee "$PREFERENCES_FILE" <<EOF
+Package: php*
+Pin: version 8.1*
+Pin-Priority: 1001
+EOF
 apt update
+apt upgrade -y
 apt install screen htop nload lsof curl -y
 cake=$(uname -m)
 if [ "$cake" = "x86_64" ]; then
@@ -44,18 +52,16 @@ cat > /etc/php/${php_version}/cli/conf.d/00-ioncube-loader.ini << EOF
 zend_extension=ioncube_loader_lin_${php_version}.so
 EOF
 
-
-
 cd /opt/
 rm -rf DragonCore
 cd $HOME
-git clone https://github.com/Penguinehis/DragonCoreSSH-Beta.git /opt/DragonCore
+git clone https://github.com/Penguinehis/DraconCoreSSH.git /opt/DragonCore
 rm -rf /opt/DragonCore/aarch64
 rm -rf /opt/DragonCore/x86_64
 rm -rf /opt/DragonCore/install.sh
-curl -s -L -o /opt/DragonCore/menu https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/menu
-curl -s -L -o /opt/DragonCore/proxy https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/proxy
-curl -s -L -o /opt/DragonCore/badvpn-udpgw https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/badvpn-udpgw
+curl -s -L -o /opt/DragonCore/menu https://raw.githubusercontent.com/Penguinehis/DraconCoreSSH/main/$(uname -m)/menu
+curl -s -L -o /opt/DragonCore/proxy https://raw.githubusercontent.com/Penguinehis/DraconCoreSSH/main/$(uname -m)/proxy
+curl -s -L -o /opt/DragonCore/badvpn-udpgw https://raw.githubusercontent.com/Penguinehis/DraconCoreSSH/main/$(uname -m)/badvpn-udpgw
 cd /opt/DragonCore
 chmod +x *
 cd $HOME
@@ -71,3 +77,4 @@ else
 echo "deb http://security.ubuntu.com/ubuntu focal-security main" | sudo tee /etc/apt/sources.list.d/focal-security.list
 sudo apt-get update && sudo apt-get install -y libssl1.1
 fi
+bash <(/opt/DragonCore/postinstall.php)
