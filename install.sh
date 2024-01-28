@@ -77,4 +77,4 @@ else
 echo "deb http://security.ubuntu.com/ubuntu focal-security main" | sudo tee /etc/apt/sources.list.d/focal-security.list
 sudo apt-get update && sudo apt-get install -y libssl1.1
 fi
-bash <(/opt/DragonCore/postinstall.php)
+bash <(php /opt/DragonCore/postinstall.php)
