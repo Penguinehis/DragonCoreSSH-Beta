@@ -55,13 +55,13 @@ EOF
 cd /opt/
 rm -rf DragonCore
 cd $HOME
-git clone https://github.com/Penguinehis/DraconCoreSSH.git /opt/DragonCore
+git clone https://github.com/Penguinehis/DragonCoreSSH-Beta.git /opt/DragonCore
 rm -rf /opt/DragonCore/aarch64
 rm -rf /opt/DragonCore/x86_64
 rm -rf /opt/DragonCore/install.sh
-curl -s -L -o /opt/DragonCore/menu https://raw.githubusercontent.com/Penguinehis/DraconCoreSSH/main/$(uname -m)/menu
-curl -s -L -o /opt/DragonCore/proxy https://raw.githubusercontent.com/Penguinehis/DraconCoreSSH/main/$(uname -m)/proxy
-curl -s -L -o /opt/DragonCore/badvpn-udpgw https://raw.githubusercontent.com/Penguinehis/DraconCoreSSH/main/$(uname -m)/badvpn-udpgw
+curl -s -L -o /opt/DragonCore/menu https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/menu
+curl -s -L -o /opt/DragonCore/proxy https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/proxy
+curl -s -L -o /opt/DragonCore/badvpn-udpgw https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/badvpn-udpgw
 cd /opt/DragonCore
 chmod +x *
 cd $HOME
