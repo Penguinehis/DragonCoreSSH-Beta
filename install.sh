@@ -81,3 +81,5 @@ fi
 bash <(php /opt/DragonCore/postinstall.php installpostgre)
 php /opt/DragonCore/dbconvert.php convertdba
 php /opt/DragonCore/dbconvert.php finishdba
+sudo sed -i '/# HostKeyAlgorithms/ a\HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config
+sudo sed -i '/# PubkeyAcceptedKeyTypes/ a\PubkeyAcceptedKeyTypes +ssh-rsa' /etc/ssh/sshd_config
