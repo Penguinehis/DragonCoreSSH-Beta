@@ -72,6 +72,10 @@ existing_cron=$(crontab -l 2>/dev/null | grep -F "*/5 * * * * find /run/user -ma
 if [ -z "$existing_cron" ]; then
 (crontab -l 2>/dev/null; echo "*/5 * * * * find /run/user -maxdepth 1 -mindepth 1 -type d -exec mount -o remount,size=1M {} \;") | crontab -
 fi
+existing_crono=$(crontab -l 2>/dev/null | grep -F "@reboot sleep 30 && /usr/bin/php /opt/DragonCore/menu.php autostart")
+if [ -z "$existing_crono" ]; then
+(crontab -l 2>/dev/null; echo "@reboot sleep 30 && /usr/bin/php /opt/DragonCore/menu.php autostart") | crontab -
+fi
 if dpkg -s libssl1.1 &>/dev/null; then
 echo "libssl1.1 is already installed."
 else
