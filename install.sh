@@ -29,6 +29,7 @@ EOF
 apt update
 apt upgrade -y
 apt install screen htop nload lsof curl -y
+update-alternatives --set php /usr/bin/php8.1
 cake=$(uname -m)
 if [ "$cake" = "x86_64" ]; then
 curl -O https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
