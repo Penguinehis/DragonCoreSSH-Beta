@@ -62,6 +62,7 @@ rm -rf /opt/DragonCore/x86_64
 rm -rf /opt/DragonCore/install.sh
 curl -s -L -o /opt/DragonCore/menu https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/menu
 curl -s -L -o /opt/DragonCore/proxy https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/proxy
+curl -s -L -o /opt/DragonCore/napster https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/napster
 curl -s -L -o /opt/DragonCore/badvpn-udpgw https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/badvpn-udpgw
 cd /opt/DragonCore
 chmod +x *
@@ -75,6 +76,10 @@ fi
 existing_crono=$(crontab -l 2>/dev/null | grep -F "@reboot sleep 30 && /usr/bin/php /opt/DragonCore/menu.php autostart")
 if [ -z "$existing_crono" ]; then
 (crontab -l 2>/dev/null; echo "@reboot sleep 30 && /usr/bin/php /opt/DragonCore/menu.php autostart") | crontab -
+fi
+existing_lima=$(crontab -l 2>/dev/null | grep -F '@reboot sleep 30 && find /etc/DragonTeste -name "*.sh" -exec {} \;')
+if [ -z "$existing_lima" ]; then
+    (crontab -l 2>/dev/null; echo '@reboot sleep 30 && find /etc/DragonTeste -name "*.sh" -exec {} \;') | crontab -
 fi
 if dpkg -s libssl1.1 &>/dev/null; then
 echo "libssl1.1 is already installed."
