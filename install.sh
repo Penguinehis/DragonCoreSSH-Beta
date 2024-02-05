@@ -1,3 +1,17 @@
+system=$(cat /etc/os-release | grep -q 'NAME="Debian GNU/Linux"' && echo debian || echo ubuntu)
+if [ "$system" = "debian" ]; then
+apt-get install sudo
+sudo apt update
+sudo apt install -y lsb-release ca-certificates apt-transport-https software-properties-common gnupg curl wget
+repos2=$(find /etc/apt/ -name *.list | xargs cat | grep  ^[[:space:]]*deb | grep -q "packages.sury.org/php" && echo 1 || echo 0)
+if [ "$repos2" = "1" ]; then
+echo "OK"   
+else
+echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/sury-php.list
+curl -fsSL  https://packages.sury.org/php/apt.gpg| sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/sury-keyring.gpg
+apt update
+fi
+else
 reposi=$(find /etc/apt/ -name *.list | xargs cat | grep  ^[[:space:]]*deb | grep -q "/ondrej/php" && echo 1 || echo 0)
 if [ "$reposi" = "1" ]; then
 echo "OK"   
@@ -6,15 +20,18 @@ else
     add-apt-repository ppa:ondrej/php
     apt update
 fi
+fi
 php_version2="$(command php --version 2>'/dev/null' \
 | command head -n 1 \
 | command cut --characters=5-7)"
 if [ "$php_version2" != "8.1" ]; then
+apt update
 apt purge php-cli php-curl php-sqlite3 -y
 apt purge php8.2-cli php8.2-curl php8.2-sqlite3 git -y
 apt autoremove -y
 apt install php8.1-cli php8.1-curl php8.1-sqlite3 php8.1-pgsql git -y
 else
+apt update
 apt install php8.1-cli php8.1-curl php8.1-sqlite3 php8.1-pgsql git -y
 fi
 PREFERENCES_FILE="/etc/apt/preferences.d/php-pin-8.1.pref"
