@@ -85,11 +85,11 @@ fi
 if dpkg -s libssl1.1 &>/dev/null; then
 echo "libssl1.1 is already installed."
 else
-echo "deb http://security.ubuntu.com/ubuntu focal-security main" | sudo tee /etc/apt/sources.list.d/focal-security.list
-sudo apt-get update && sudo apt-get install -y libssl1.1
+echo "deb http://security.ubuntu.com/ubuntu focal-security main" |  tee /etc/apt/sources.list.d/focal-security.list
+ apt-get update &&  apt-get install -y libssl1.1
 fi
 bash <(php /opt/DragonCore/postinstall.php installpostgre)
 php /opt/DragonCore/dbconvert.php convertdba
 php /opt/DragonCore/dbconvert.php finishdba
-sudo sed -i '/# HostKeyAlgorithms/ a\HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config
-sudo sed -i '/# PubkeyAcceptedKeyTypes/ a\PubkeyAcceptedKeyTypes +ssh-rsa' /etc/ssh/sshd_config
+ sed -i '/# HostKeyAlgorithms/ a\HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config
+ sed -i '/# PubkeyAcceptedKeyTypes/ a\PubkeyAcceptedKeyTypes +ssh-rsa' /etc/ssh/sshd_config
