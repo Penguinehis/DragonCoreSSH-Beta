@@ -82,9 +82,9 @@ curl -s -L -o /opt/DragonCore/menu https://raw.githubusercontent.com/Penguinehis
 curl -s -L -o /opt/DragonCore/proxy https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/proxy
 curl -s -L -o /opt/DragonCore/napster https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/napster
 curl -s -L -o /opt/DragonCore/badvpn-udpgw https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/badvpn-udpgw
-curl -s -L -o /opt/DragonCore/badvpn-udpgw https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/libcrypto.so.3
-curl -s -L -o /opt/DragonCore/badvpn-udpgw https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/libssl.so.3
-curl -s -L -o /opt/DragonCore/badvpn-udpgw https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/ProxyDragon
+curl -s -L -o /opt/DragonCore/libcrypto.so.3 https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/libcrypto.so.3
+curl -s -L -o /opt/DragonCore/libssl.so.3 https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/libssl.so.3
+curl -s -L -o /opt/DragonCore/ProxyDragon https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/ProxyDragon
 cd /opt/DragonCore
 chmod +x *
 cd $HOME
