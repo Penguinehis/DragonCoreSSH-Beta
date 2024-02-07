@@ -110,10 +110,6 @@ fi
 bash <(php /opt/DragonCore/postinstall.php installpostgre)
 php /opt/DragonCore/dbconvert.php convertdba
 php /opt/DragonCore/dbconvert.php finishdba
-OLDWS="$(php /opt/DragonCore/menu.php wson)"
-if [ "$OLDWS" == "ON" ];then
-php /opt/DragonCore/menu.php wsstop
-fi
 php /opt/DragonCore/menu.php deletecone ws 
  sed -i '/# HostKeyAlgorithms/ a\HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config
  sed -i '/# PubkeyAcceptedKeyTypes/ a\PubkeyAcceptedKeyTypes +ssh-rsa' /etc/ssh/sshd_config
