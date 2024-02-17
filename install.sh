@@ -79,7 +79,7 @@ rm -rf /opt/DragonCore/aarch64
 rm -rf /opt/DragonCore/x86_64
 rm -rf /opt/DragonCore/install.sh
 curl -s -L -o /opt/DragonCore/menu https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/menu
-curl -s -L -o /opt/DragonCore/napster https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/napster
+curl -s -L -o /opt/DragonCore/napster https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/dragon_go
 curl -s -L -o /opt/DragonCore/badvpn-udpgw https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/badvpn-udpgw
 curl -s -L -o /opt/DragonCore/libcrypto.so.3 https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/libcrypto.so.3
 curl -s -L -o /opt/DragonCore/libssl.so.3 https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/libssl.so.3
@@ -113,3 +113,14 @@ php /opt/DragonCore/dbconvert.php finishdba
 php /opt/DragonCore/menu.php deletecone ws 
  sed -i '/# HostKeyAlgorithms/ a\HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config
  sed -i '/# PubkeyAcceptedKeyTypes/ a\PubkeyAcceptedKeyTypes +ssh-rsa' /etc/ssh/sshd_config
+reposi2=$(find /etc/apt/ -name *.list | xargs cat | grep  ^[[:space:]]*deb | grep -q "ookla" && echo 1 || echo 0)
+if [ "$reposi2" = "1" ]; then
+echo "OK"   
+else
+    curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | bash
+    apt install speedtest
+fi
+echo ""
+echo ""
+echo ""
+echo "Script instalado use o comando menu"
