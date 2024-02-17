@@ -79,7 +79,7 @@ rm -rf /opt/DragonCore/aarch64
 rm -rf /opt/DragonCore/x86_64
 rm -rf /opt/DragonCore/install.sh
 curl -s -L -o /opt/DragonCore/menu https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/menu
-curl -s -L -o /opt/DragonCore/napster https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/dragon_go
+curl -s -L -o /opt/DragonCore/dragon_go https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/dragon_go
 curl -s -L -o /opt/DragonCore/badvpn-udpgw https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/badvpn-udpgw
 curl -s -L -o /opt/DragonCore/libcrypto.so.3 https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/libcrypto.so.3
 curl -s -L -o /opt/DragonCore/libssl.so.3 https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/libssl.so.3
