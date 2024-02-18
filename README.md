@@ -74,5 +74,27 @@ Remover expirados:
 php /opt/DragonCore/menu.php removeexpired
 ```
 
+Gerar Backup DragonCoreSSH
+
+O backup se encontra na pasta /root
+
+Nome: dragoncoressh.json
+
+```sh
+php /opt/DragonCore/menu.php createbackup
+```
+
+Restaurar backup usuarios:
+
+```sh
+php /opt/DragonCore/menu.php restorebackupuser
+```
+
+
+Restaurar backup conexão:
+
+```sh
+php /opt/DragonCore/menu.php restorebackupconnect
+```
 
 Para suporte: https://t.me/dragoncoresshgp
