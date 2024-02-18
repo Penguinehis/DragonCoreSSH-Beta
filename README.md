@@ -97,4 +97,12 @@ Restaurar backup conexão:
 php /opt/DragonCore/menu.php restorebackupconnect
 ```
 
+Relatorio de usuarios
+
+este relatorio mostrara todos usuarios senhas e limites 
+
+```sh
+php /opt/DragonCore/menu.php relatoriouser
+```
+
 Para suporte: https://t.me/dragoncoresshgp
