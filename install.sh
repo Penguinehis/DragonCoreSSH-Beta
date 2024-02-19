@@ -138,6 +138,13 @@ install_netstat() {
     fi
 }
 install_netstat
+screen -X -S proxydragon quit
+screen -X -S openvpn quit
+screen -X -S badvpn quit
+screen -X -S checkuser quit
+screen -X -S napster quit
+screen -X -S limiter quit
+php /opt/DragonCore/menu.php autostart
 echo ""
 echo ""
 echo ""
