@@ -120,6 +120,24 @@ else
     curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | bash
     apt install speedtest
 fi
+install_netstat() {
+    GREEN='\033[0;32m'
+    RED='\033[0;31m'
+    NC='\033[0m'
+    if command -v netstat &> /dev/null; then
+        echo "${GREEN}Netstat is already installed.${NC}"
+    else
+        echo "Netstat is not installed. Trying to install..."
+        if [ -x "$(command -v apt)" ]; then
+             apt update
+             apt install -y net-tools
+            echo -e "${GREEN}Netstat installation complete.${NC}"
+        else
+            echo -e "${RED}Unsupported system. Please install netstat manually.${NC}"
+        fi
+    fi
+}
+install_netstat
 echo ""
 echo ""
 echo ""
