@@ -105,4 +105,31 @@ este relatorio mostrara todos usuarios senhas e limites
 php /opt/DragonCore/menu.php relatoriouser
 ```
 
+Checkar % de uso de Ram
+
+```sh
+php /opt/DragonCore/menu.php ram
+```
+Checkar % de uso de CPU
+
+```sh
+php /opt/DragonCore/menu.php cpu
+```
+
+Usuarios criados
+
+```sh
+php /opt/DragonCore/menu.php retrieveDataAndCount
+```
+
+Usuarios Online
+
+```sh
+php /opt/DragonCore/menu.php onlines
+```
+Uso de rede
+
+```sh
+php /opt/DragonCore/menu.php network
+```
 Para suporte: https://t.me/dragoncoresshgp
