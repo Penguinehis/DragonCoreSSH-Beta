@@ -138,6 +138,12 @@ install_netstat() {
     fi
 }
 install_netstat
+#Gerar DBS:
+php /opt/DragonCore/menu.php createautostart
+php /opt/DragonCore/menu.php createTable
+php /opt/DragonCore/menu.php createdbdragon
+php /opt/DragonCore/menu.php createv2table
+#continua o script
 screen -X -S proxydragon quit
 screen -X -S openvpn quit
 screen -X -S badvpn quit
