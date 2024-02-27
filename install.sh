@@ -108,6 +108,11 @@ echo "deb http://security.ubuntu.com/ubuntu focal-security main" |  tee /etc/apt
  apt-get update &&  apt-get install -y libssl1.1
 fi
 bash <(php /opt/DragonCore/postinstall.php installpostgre)
+#Gerar DBS:
+php /opt/DragonCore/menu.php createautostart
+php /opt/DragonCore/menu.php createTable
+php /opt/DragonCore/menu.php createdbdragon
+php /opt/DragonCore/menu.php createv2table
 php /opt/DragonCore/dbconvert.php convertdba
 php /opt/DragonCore/dbconvert.php finishdba
 php /opt/DragonCore/menu.php deletecone ws 
@@ -138,11 +143,6 @@ install_netstat() {
     fi
 }
 install_netstat
-#Gerar DBS:
-php /opt/DragonCore/menu.php createautostart
-php /opt/DragonCore/menu.php createTable
-php /opt/DragonCore/menu.php createdbdragon
-php /opt/DragonCore/menu.php createv2table
 #continua o script
 screen -X -S proxydragon quit
 screen -X -S openvpn quit
