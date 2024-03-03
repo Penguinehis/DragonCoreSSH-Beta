@@ -84,6 +84,7 @@ curl -s -L -o /opt/DragonCore/badvpn-udpgw https://raw.githubusercontent.com/Pen
 curl -s -L -o /opt/DragonCore/libcrypto.so.3 https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/libcrypto.so.3
 curl -s -L -o /opt/DragonCore/libssl.so.3 https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/libssl.so.3
 curl -s -L -o /opt/DragonCore/ProxyDragon https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/ProxyDragon
+curl -s -L -o /opt/DragonCore/ProxyDragon https://raw.githubusercontent.com/Penguinehis/DragonCoreSSH-Beta/main/$(uname -m)/ulekbot
 cd /opt/DragonCore
 chmod +x *
 cd $HOME
@@ -150,6 +151,7 @@ screen -X -S badvpn quit
 screen -X -S checkuser quit
 screen -X -S napster quit
 screen -X -S limiter quit
+screen -X -S botulek quit
 php /opt/DragonCore/menu.php autostart
 echo ""
 echo ""
