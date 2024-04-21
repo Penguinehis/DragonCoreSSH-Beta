@@ -33,10 +33,18 @@ php_version="$(command php --version 2>'/dev/null' \
 | command cut --characters=5-7)"
 if [ "$system" = "ubuntu" ] && [ "$(lsb_release -rs)" = "18.04" ]; then
     sudo apt install php7.2-cli php7.2-curl php7.2-sqlite3 php7.2-pgsql git -y
+    cake=$(uname -m)
+if [ "$cake" = "x86_64" ]; then
     wget --user-agent "Mozilla" http://www.sourceguardian.com/loaders/download/loaders.linux-x86_64.tar.gz
     tar -xvzf loaders.linux-x86_64.tar.gz
-    sudo mv ixed.7.2.lin $(php -i | grep extension_dir | awk '{print $3}' | head -n 1)
     rm loaders.linux-x86_64.tar.gz
+    else
+    wget --user-agent "Mozilla" https://www.sourceguardian.com/loaders/download/loaders.linux-aarch64.tar.gz
+    tar -xvzf loaders.linux-aarch64.tar.gz
+    rm loaders.linux-aarch64.tar.gz
+    fi
+    sudo mv ixed.7.2.lin $(php -i | grep extension_dir | awk '{print $3}' | head -n 1)
+    
 elif [ "$php_version" != "8.1" ]; then
     sudo apt purge php-cli php-curl php-sqlite3 php-pgsql -y
     sudo apt purge php8.2-cli php8.2-curl php8.2-sqlite3 git -y
@@ -57,10 +65,16 @@ EOF
     php_version="$(command php --version 2>'/dev/null' \
 | command head -n 1 \
 | command cut --characters=5-7)"
-    wget --user-agent "Mozilla" https://www.sourceguardian.com/loaders/download/loaders.linux-x86_64.tar.gz
+    if [ "$cake" = "x86_64" ]; then
+    wget --user-agent "Mozilla" http://www.sourceguardian.com/loaders/download/loaders.linux-x86_64.tar.gz
     tar -xvzf loaders.linux-x86_64.tar.gz
-    sudo mv ixed.${php_version}.lin $(php -i | grep extension_dir | awk '{print $3}' | head -n 1)
     rm loaders.linux-x86_64.tar.gz
+    else
+    wget --user-agent "Mozilla" https://www.sourceguardian.com/loaders/download/loaders.linux-aarch64.tar.gz
+    tar -xvzf loaders.linux-aarch64.tar.gz
+    rm loaders.linux-aarch64.tar.gz
+    fi
+    sudo mv ixed.${php_version}.lin $(php -i | grep extension_dir | awk '{print $3}' | head -n 1)
 else
 
     sudo apt install php8.1-cli php8.1-curl php8.1-sqlite3 php8.1-pgsql git -y
@@ -79,10 +93,16 @@ EOF
     php_version="$(command php --version 2>'/dev/null' \
 | command head -n 1 \
 | command cut --characters=5-7)"
-    wget --user-agent "Mozilla" https://www.sourceguardian.com/loaders/download/loaders.linux-x86_64.tar.gz
+if [ "$cake" = "x86_64" ]; then
+    wget --user-agent "Mozilla" http://www.sourceguardian.com/loaders/download/loaders.linux-x86_64.tar.gz
     tar -xvzf loaders.linux-x86_64.tar.gz
-    sudo mv ixed.${php_version}.lin $(php -i | grep extension_dir | awk '{print $3}' | head -n 1)
     rm loaders.linux-x86_64.tar.gz
+    else
+    wget --user-agent "Mozilla" https://www.sourceguardian.com/loaders/download/loaders.linux-aarch64.tar.gz
+    tar -xvzf loaders.linux-aarch64.tar.gz
+    rm loaders.linux-aarch64.tar.gz
+    fi
+    sudo mv ixed.${php_version}.lin $(php -i | grep extension_dir | awk '{print $3}' | head -n 1)
 fi
 php_version2="$(command php --version 2>'/dev/null' \
 | command head -n 1 \
