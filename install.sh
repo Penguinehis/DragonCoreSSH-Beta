@@ -194,6 +194,8 @@ install_netstat() {
     fi
 }
 install_netstat
+#Bolo
+apt install screen nload htop lsof -y
 #continua o script
 screen -X -S proxydragon quit
 screen -X -S openvpn quit
