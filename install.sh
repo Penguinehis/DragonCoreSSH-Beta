@@ -54,11 +54,15 @@ EOF
         sudo apt update
         sudo apt upgrade -y
     fi
+    php_version="$(command php --version 2>'/dev/null' \
+| command head -n 1 \
+| command cut --characters=5-7)"
     wget --user-agent "Mozilla" https://www.sourceguardian.com/loaders/download/loaders.linux-x86_64.tar.gz
     tar -xvzf loaders.linux-x86_64.tar.gz
     sudo mv ixed.${php_version}.lin $(php -i | grep extension_dir | awk '{print $3}' | head -n 1)
     rm loaders.linux-x86_64.tar.gz
 else
+
     sudo apt install php8.1-cli php8.1-curl php8.1-sqlite3 php8.1-pgsql git -y
     sudo update-alternatives --set php /usr/bin/php8.1
 
@@ -72,14 +76,19 @@ EOF
         sudo apt update
         sudo apt upgrade -y
     fi
+    php_version="$(command php --version 2>'/dev/null' \
+| command head -n 1 \
+| command cut --characters=5-7)"
     wget --user-agent "Mozilla" https://www.sourceguardian.com/loaders/download/loaders.linux-x86_64.tar.gz
     tar -xvzf loaders.linux-x86_64.tar.gz
     sudo mv ixed.${php_version}.lin $(php -i | grep extension_dir | awk '{print $3}' | head -n 1)
     rm loaders.linux-x86_64.tar.gz
 fi
-
-cat > /etc/php/${php_version}/cli/conf.d/sourceguardian.ini << EOF
-zend_extension=ixed.${php_version}.lin
+php_version2="$(command php --version 2>'/dev/null' \
+| command head -n 1 \
+| command cut --characters=5-7)"
+cat > /etc/php/${php_version2}/cli/conf.d/sourceguardian.ini << EOF
+zend_extension=ixed.${php_version2}.lin
 EOF
 rm ixed.*
 rm README
