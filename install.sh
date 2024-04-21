@@ -65,6 +65,7 @@ EOF
     php_version="$(command php --version 2>'/dev/null' \
 | command head -n 1 \
 | command cut --characters=5-7)"
+cake=$(uname -m)
     if [ "$cake" = "x86_64" ]; then
     wget --user-agent "Mozilla" http://www.sourceguardian.com/loaders/download/loaders.linux-x86_64.tar.gz
     tar -xvzf loaders.linux-x86_64.tar.gz
@@ -93,6 +94,7 @@ EOF
     php_version="$(command php --version 2>'/dev/null' \
 | command head -n 1 \
 | command cut --characters=5-7)"
+cake=$(uname -m)
 if [ "$cake" = "x86_64" ]; then
     wget --user-agent "Mozilla" http://www.sourceguardian.com/loaders/download/loaders.linux-x86_64.tar.gz
     tar -xvzf loaders.linux-x86_64.tar.gz
